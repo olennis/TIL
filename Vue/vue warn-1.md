@@ -32,4 +32,17 @@ function hydrate (elm, vnode, insertedVnodeQueue, inVPre) {
 디버깅 하는 법이라고 했지만, 콘솔로그가 실행이 되지 않아 정확한 사용법을 모르겠다
 ```
 
-###(진행중)
+### 3rd try
+
+컴포넌트에 삽입한 <script>태그가 문제였다. 컴포넌트에 삽입하면서 렌더 타이밍이 잘 안맞았던 것 같다.
+
+```jsx
+컴포넌트에서 <script> 태그를 삭제 후,
+
+//nuxt.config.js
+head : {
+	script : {src:''}//추가
+}
+```
+
+생각보다 간단하게 에러를 해결했다.
