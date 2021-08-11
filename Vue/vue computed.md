@@ -72,3 +72,36 @@ computed 속성의 경우
 ```
 
 이와 같은 코드가 있을 때, computed 속성이 여러번 있더라도 계산 되어 있던 값을 한 번만 리턴하게 된다. 작은 데이터에서는 큰 차이가 없겠지만, 많이 사용하게 된다면 이런 부분에서 캐싱을 하는 것이 도움이 된다.
+
+### computed 사용
+
+v-if 처럼 조건에 따라 렌더를 달리 할 때, 식이 복잡할 때가 있다.
+
+```jsx
+<template>
+  <div v-if="computedTest"></div>
+</template>
+```
+
+위와 같이 html을 구성했을 때,
+
+```jsx
+<script>
+	export default {
+		...
+	computed:{
+			computedTest(){
+			let status = true;
+      if (false조건)
+        status = false;
+      else {
+        status = true;
+      }
+      return status;
+			}
+		}
+	}
+</script>
+```
+
+로 복잡한 식을 구성해서 true,false 값을 v-if에 넣어줘서 값을 렌더 할 수 있다.
