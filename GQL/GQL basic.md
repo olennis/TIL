@@ -26,5 +26,97 @@ posts
 ```
 
 위와 같은 형식의 요청을 보내게 된다. GQL 요청이 어떤식으로 이루어지는지 아직은 잘 모르겠지만, REST와 비교해 더 간단해 보이는것은 맞는것 같다.
+또한 GQL을 사용하게 되면 쿼리를 통하여 딱 필요한 데이터만 fetching 해주기 때문에 overfetch 혹은 underfetch에 대한 걱정을 할 필요가 없다.
+
+### Graphql 사용 예
+
+```jsx
+{
+  "accounts": [
+    {
+      "id": "1",
+      "username": "velopert",
+      "email": "public.velopert@gmail.com",
+      "friends": [
+        "2",
+        "3"
+      ],
+      "first_name": "Minjun",
+      "last_name": "Kim"
+    },
+    {
+      "id": "2",
+      "username": "jn4kim",
+      "email": "jn4kim@gmail.com",
+      "friends": [
+        "1",
+        "4"
+      ],
+      "first_name": "Jayna",
+      "last_name": "Kim"
+    },
+    {
+      "id": "3",
+      "username": "abet",
+      "email": "abet@gmail.com",
+      "friends": [
+        "4"
+      ],
+      "first_name": "Abet",
+      "last_name": "Bane"
+    },
+    {
+      "id": "4",
+      "username": "Betty",
+      "email": "betty@gmail.com",
+      "friends": [
+        "1",
+        "3"
+      ],
+      "first_name": "Betty",
+      "last_name": "Cain"
+    }
+  ]
+}
+
+///
+query {
+    account(id: "1") {
+        username
+        email
+        firstName
+        lastName
+        friends {
+            firstName
+            username
+        }
+    }
+}
+```
+
+### 결과
+
+```jsx
+{
+  "data": {
+    "account": {
+      "username": "velopert",
+      "email": "public.velopert@gmail.com",
+      "firstName": "Minjun",
+      "lastName": "Kim",
+      "friends": [
+        {
+          "firstName": "Jayna",
+          "username": "jn4kim"
+        },
+        {
+          "firstName": "Abet",
+          "username": "abet"
+        }
+      ]
+    }
+  }
+}
+```
 
 아직 기초 개념만 훑어본 정도기 때문에 실제로 사용까지 해보는것은 무리가 있지만, 조금 더 시간을 쏟아서 GQL도 제대로 다룰 수 있도록 하자.
