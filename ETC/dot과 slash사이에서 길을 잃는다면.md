@@ -92,3 +92,20 @@ package.json의 스크립트를 craco로 수정한다.
     "test": "craco test",
   },
 ```
+
+220402 추가
+업무에 적용하기 위해
+
+```jsx
+
+{
+  "compilerOptions": {
+    ...
+      "~common/*": ["src/domain/common/*"]
+    }
+  }
+}
+
+```
+
+위와 같이 적용 하여 보았지만 ~common이 동작하지 않는다. 원인이 뭘까..
