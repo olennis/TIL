@@ -31,7 +31,8 @@ useQuery는 컴포넌트가 마운트, 렌더 될 때, 아폴로 클라이언트
 220415 추가
 
 - refetch를 통해 데이터를 업데이트 하고 새로고침 하는것 같은 결과를 가져 올 수 있다.
-- refetch === 캐시 이 후의 데이터를 가져옴
+- refetch === 캐시 이후의 데이터를 가져옴
+- useQuery에서의 refetch, useLazyQuery에서의 refetch..?
 
 ## useLazyQuery
 
